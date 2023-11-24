@@ -1,6 +1,6 @@
 {
   "name": "aiy-fastify-session",
-  "version": "10.5.1",
+  "version": "10.5.2",
   "description": "a session plugin for fastify",
   "main": "lib/fastifySession.js",
   "type": "commonjs",
