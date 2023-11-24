@@ -17,7 +17,7 @@ declare module 'fastify' {
     /** A session store. */
     sessionStore: Readonly<fastifySession.SessionStore>;
   }
-  
+
   interface Session extends ExpressSessionData { }
 }
 
@@ -56,7 +56,7 @@ interface Signer {
 }
 
 declare namespace fastifySession {
-  
+
   export interface FastifySessionObject extends Fastify.Session {
     sessionId: string;
 
@@ -111,6 +111,7 @@ declare namespace fastifySession {
   }
 
   export interface FastifySessionOptions {
+
     /**
      * The secret used to sign the cookie.
      *
@@ -129,10 +130,15 @@ declare namespace fastifySession {
 
     /**
      * The algorithm used to sign the cookie.
-     * 
+     *
      * @default 'sha256'
      */
     algorithm?: string;
+
+    /**
+     * first get sessionId from head
+     */
+    headerName?: string;
 
     /** The name of the session cookie. Defaults to `sessionId`. */
     cookieName?: string;
