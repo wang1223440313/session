@@ -2,11 +2,11 @@
 
 import type * as Fastify from 'fastify';
 import { FastifyPluginCallback } from 'fastify';
-import { SerializeOptions } from "@fastify/cookie"
+import { CookieSerializeOptions } from "@fastify/cookie"
 
 declare module 'fastify' {
   interface FastifyInstance {
-    decryptSession<Request extends Record<string, any> = FastifyRequest>(sessionId: string, request: Request, cookieOpts: SerializeOptions, callback: Callback): void;
+    decryptSession<Request extends Record<string, any> = FastifyRequest>(sessionId: string, request: Request, cookieOpts: fastifySession.CookieOptions, callback: Callback): void;
     decryptSession<Request extends Record<string, any> = FastifyRequest>(sessionId: string, request: Request, callback: Callback): void;
   }
 
@@ -148,7 +148,7 @@ declare namespace fastifySession {
      *
      * @link https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie
      */
-    cookie?: SerializeOptions;
+    cookie?: CookieOptions;
 
     /**
      * A session store.
@@ -179,6 +179,8 @@ declare namespace fastifySession {
      */
     cookiePrefix?: string;
   }
+
+  export interface CookieOptions extends Omit<CookieSerializeOptions, 'signed'> {}
 
   export class MemoryStore implements fastifySession.SessionStore {
     constructor(map?: Map<string, Fastify.Session>);

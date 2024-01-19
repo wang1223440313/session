@@ -4,7 +4,7 @@
 [![NPM version](https://img.shields.io/npm/v/@fastify/session.svg?style=flat)](https://www.npmjs.com/package/@fastify/session)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://standardjs.com/)
 
-A session plugin for [fastify](http://fastify.io/).
+A session plugin for [fastify](http://fastify.dev/).
 Requires the [@fastify/cookie](https://github.com/fastify/fastify-cookie) plugin.
 
 **NOTE:** This is the continuation of [fastify-session](https://github.com/SerayaEryn/fastify-session) which is unmaintained by now. All work credit till [`e201f7`](https://github.com/fastify/session/commit/e201f78fc9d7bd33c6f2e84988be7c8af4b5a8a3) commit goes to [SerayaEryn](https://github.com/SerayaEryn) and contributors.
@@ -74,6 +74,7 @@ The options object is used to generate the `Set-Cookie` header of the session co
 * `expires` - The expiration `date` used for the `Expires` attribute. If both `expires` and `maxAge` are set, then `maxAge` is used.
 * `sameSite`- The `boolean` or `string` of the `SameSite` attribute. Using `Secure` mode with `auto` attribute will change the behavior of the `SameSite` attribute in `http` mode. The `SameSite` attribute will automatically be set to `Lax` with an `http` request. See this [link](https://www.chromium.org/updates/same-site).
 * `domain` - The `Domain` attribute.
+* `partitioned` (**experimental**) - The `boolean` value of the `Partitioned` attribute. Using the Partitioned attribute as part of Cookies Having Independent Partitioned State (CHIPS) to allow cross-site access with a separate cookie used per site. Defaults to false.
 
 ##### store
 A session store. Needs the following methods:
